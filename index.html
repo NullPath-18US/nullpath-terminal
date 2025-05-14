@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NullPath Terminal Login</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Courier New', monospace;
+      background-color: #0a0a0a;
+      color: #39ff14;
+      overflow: hidden;
+    }
+    .terminal {
+      padding: 20px;
+      white-space: pre-wrap;
+    }
+    .blur {
+      color: transparent;
+      text-shadow: 0 0 5px #39ff14;
+    }
+    .input-area {
+      margin-top: 20px;
+    }
+    input {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #39ff14;
+      color: #39ff14;
+      font-size: 16px;
+      outline: none;
+      width: 80%;
+    }
+    .hidden {
+      display: none;
+    }
+    .vault {
+      border-top: 1px dashed #39ff14;
+      margin-top: 40px;
+      padding-top: 10px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="terminal" id="terminal">
+    <div id="start">
+      <span>███████ NULLPATH TERMINAL NETWORK ███████</span>
+      
+      
+WARNING: You are attempting to access a secure federal subsystem of the Metaphysical Department of Sciences.
+      
+      
+Unauthorized access will be prosecuted under §§ 12-19 of the Espionage Act [REDACTED] 1982 revision.
+      
+      
+███████ OPERATIVE-LEVEL AUTH REQUIRED ███████
+
+ACCESS TO: TEST SUBJECT #A21101 (NOAH) —  ██[CREDENTIALS REQUIRED]██
+    </div>
+
+    <div class="input-area" id="login">
+      > Enter credentials: <input type="password" id="pwInput" onkeydown="if(event.key==='Enter') handleLogin()">
+    </div>
+
+    <div id="session" class="hidden">
+      
+ACCESS GRANTED: PROXY ACCESS [NOAH_α021A]
+SESSION SECURITY: 2FA OVERRIDE — EXPIRED  ░░░
+
+>> TRACKING ENABLED :: GPS:: ACTIVE
+>> NAME: ████████
+>> LOCATION: ████████
+      
+To disable tracking, press BACKSPACE.
+<span class="blur">[YOUR INFO REDACTED HERE]</span>
+
+[INFO WIPED]
+
+████ TERMINAL MODULE OPEN ████
+Session Path: /access/restricted/user/alpha/Vault/███
+
+      <div class="vault">
+>> UNLOCKED DIRECTORY: /Logs/Decoded/USBAsset
+>> ENCRYPTED DIRECTORY: /ΩMEGA-Vault/
+      
+Access Attempt: Denied — Level [5Σ] Key Missing
+      
+Note: Entry requires double-layered decoding.
+— This section may contain ARCHIVAL DATA and NULLPATH KILLSWITCH SIGNATURES —
+IGNORE FOR NOW. Refer to assigned operative if revisiting.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function handleLogin() {
+      const input = document.getElementById('pwInput');
+      if (input.value.trim() === 'alpha021-noah') {
+        document.getElementById('login').classList.add('hidden');
+        document.getElementById('start').classList.add('hidden');
+        document.getElementById('session').classList.remove('hidden');
+      } else {
+        alert('ACCESS DENIED');
+        input.value = '';
+      }
+    }
+  </script>
+</body>
+</html>
