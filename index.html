@@ -3,109 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NullPath Terminal Login</title>
+  <title>NullPath Terminal</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Courier New', monospace;
-      background-color: #0a0a0a;
-      color: #39ff14;
-      overflow: hidden;
+      background-color: #0d0d0d;
+      color: #00ffcc;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 2rem;
     }
-    .terminal {
-      padding: 20px;
+    .warning {
+      color: #ff0000;
+      font-weight: bold;
+      margin-bottom: 2rem;
+    }
+    .blot {
+      background-color: #0d0d0d;
+      color: #0d0d0d;
+      user-select: none;
+    }
+    .console {
+      background-color: #1a1a1a;
+      padding: 1rem;
+      border: 2px solid #00ffcc;
       white-space: pre-wrap;
-    }
-    .blur {
-      color: transparent;
-      text-shadow: 0 0 5px #39ff14;
-    }
-    .input-area {
-      margin-top: 20px;
+      margin-top: 2rem;
     }
     input {
       background: transparent;
+      color: #00ffcc;
       border: none;
-      border-bottom: 1px solid #39ff14;
-      color: #39ff14;
-      font-size: 16px;
+      border-bottom: 1px solid #00ffcc;
       outline: none;
-      width: 80%;
+      font-family: monospace;
+      font-size: 1rem;
     }
-    .hidden {
+    .hidden-section {
       display: none;
-    }
-    .vault {
-      border-top: 1px dashed #39ff14;
-      margin-top: 40px;
-      padding-top: 10px;
-      color: #555;
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
-  <div class="terminal" id="terminal">
-    <div id="start">
-      <span>███████ NULLPATH TERMINAL NETWORK ███████</span>
-      
-      
-WARNING: You are attempting to access a secure federal subsystem of the Metaphysical Department of Sciences.
-      
-      
-Unauthorized access will be prosecuted under §§ 12-19 of the Espionage Act [REDACTED] 1982 revision.
-      
-      
-███████ OPERATIVE-LEVEL AUTH REQUIRED ███████
+  <div class="warning">
+    [ACCESS RESTRICTED] — This terminal is designated for NullPath Operatives and Level V Metaphysical Authorities ONLY. Unauthorized entry is a direct violation of 18 U.S. Code § 1203. Breach of protocol may result in metaphysical erasure.
+  </div>
 
-ACCESS TO: TEST SUBJECT #A21101 (NOAH) —  ██[CREDENTIALS REQUIRED]██
-    </div>
+  <p>Attempting login... Identity recognized: <span class="blot" id="user-id">STARTHORK</span></p>
 
-    <div class="input-area" id="login">
-      > Enter credentials: <input type="password" id="pwInput" onkeydown="if(event.key==='Enter') handleLogin()">
-    </div>
-
-    <div id="session" class="hidden">
-      
-ACCESS GRANTED: PROXY ACCESS [NOAH_α021A]
-SESSION SECURITY: 2FA OVERRIDE — EXPIRED  ░░░
-
->> TRACKING ENABLED :: GPS:: ACTIVE
->> NAME: ████████
->> LOCATION: ████████
-      
-To disable tracking, press BACKSPACE.
-<span class="blur">[YOUR INFO REDACTED HERE]</span>
-
-[INFO WIPED]
-
-████ TERMINAL MODULE OPEN ████
-Session Path: /access/restricted/user/alpha/Vault/███
-
-      <div class="vault">
->> UNLOCKED DIRECTORY: /Logs/Decoded/USBAsset
->> ENCRYPTED DIRECTORY: /ΩMEGA-Vault/
-      
-Access Attempt: Denied — Level [5Σ] Key Missing
-      
-Note: Entry requires double-layered decoding.
-— This section may contain ARCHIVAL DATA and NULLPATH KILLSWITCH SIGNATURES —
-IGNORE FOR NOW. Refer to assigned operative if revisiting.
-      </div>
-    </div>
+  <div class="console">
+    Logging personal trace ID...
+    <br>
+    Information WIPED: <input type="text" value="STARTHORK's Information" id="wipe-field">
   </div>
 
   <script>
-    function handleLogin() {
-      const input = document.getElementById('pwInput');
-      if (input.value.trim() === 'alpha021-noah') {
-        document.getElementById('login').classList.add('hidden');
-        document.getElementById('start').classList.add('hidden');
-        document.getElementById('session').classList.remove('hidden');
-      } else {
-        alert('ACCESS DENIED');
-        input.value = '';
+    const wipeField = document.getElementById('wipe-field');
+    wipeField.addEventListener('keydown', function (e) {
+      if (e.key === 'Backspace') {
+        wipeField.value = wipeField.value.slice(0, -1);
+        if (wipeField.value.length === 0) {
+          document.getElementById('vault-section').style.display = 'block';
+        }
+        e.preventDefault();
       }
-    }
+    });
   </script>
+
+  <div id="vault-section" class="hidden-section">
+    <p>[NOTICE] Vault Lock 3/5 Detected - Clearance Unauthorized</p>
+    <p>Visual Fragment Extracted: <code>39AF-███-C8ZP-███-R41X</code></p>
+    <p>Full sequence located within secured sectors: DEPT-META-AZ19</p>
+  </div>
+
+  <div class="console">
+    NullPath | Division of the Metaphysical Department of Sciences<br><br>
+    NullPath operates as the sole metaphysical defense contractor legally exempt from extradition and prosecution under United States Code 18 USC § 1203. Through classified quantum layering and psychological membrane research, NullPath holds jurisdiction over memory suppression, dimensional containment, and biological erasure of targets identified as anomalies.<br><br>
+    <strong>PROGRAM: AXEL - SUBJECT CLASS SIGMA</strong><br>
+    Current Status: ☐ Awaiting Phase 2 Transit<br>
+    Destination: META-PHY-AUXILLIARY (Contingency Site Delta-7)<br><br>
+    <strong>PROGRAM: NOAH - SUBJECT CLASS THETA</strong><br>
+    Current Status: ☐ Handed Over to PHI-LABS<br>
+    Directive: Consciousness Extraction via parallel-thread spectral bridge<br><br>
+    [NEXT SECURE NODE: /vault/meta_collapse.22A]
+  </div>
 </body>
 </html>
